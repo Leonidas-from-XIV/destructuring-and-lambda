@@ -1,5 +1,5 @@
 all:
-	latexmk slides.tex
+	latexmk destructuring.tex
 
 watch:
 	$(MAKE) all
