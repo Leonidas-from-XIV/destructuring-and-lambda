@@ -1,5 +1,5 @@
 all:
-	latexmk destructuring.tex
+	latexmk destructuring.tex lambda.tex
 
 watch:
 	$(MAKE) all

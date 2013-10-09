@@ -1,0 +1,59 @@
+\documentclass{beamer}
+\usepackage{fontspec}
+\usepackage{minted}
+\usepackage{tango}
+\usepackage{ccicons}
+\usepackage{tikz}
+\usepackage[normalem]{ulem}
+\usepackage{csquotes}
+\usepackage{amssymb}
+
+\mode<presentation>{\usetheme{rwo}}
+
+\setsansfont{Yanone Kaffeesatz Regular}
+\setmainfont{EB Garamond}
+\setmonofont[Scale=0.8]{Droid Sans Mono Dotted}
+
+\usemintedstyle{tango}
+\setbeamerfont{title}{family=\rmfamily}
+
+\setlength{\parskip}{8pt plus 1pt minus 1pt}
+
+\defbeamertemplate*{title page}{rwo}[1][]
+{
+  \vbox{}
+  \vfill
+  \begin{centering}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+
+    \begin{center}
+      \ccby{}\\
+      {\tiny This work is licensed under a
+      \href{http://creativecommons.org/licenses/by/3.0/deed.en_US}%
+      {Creative Commons Attribution 3.0 Unported License}.}
+    \end{center}
+    \vspace*{-2.5ex}
+  \end{centering}
+  \vfill
+}
+
+\renewcommand{\example}[1]{{\usebeamercolor[fg]{example text} #1}}
+\renewcommand{\ULthickness}[0]{0.23ex}
