@@ -9,8 +9,63 @@
 
 \frame{\titlepage}
 
-\begin{frame}
-  Hello
+\centerframe{
+  Apart from simple types, there are collections, which contain other things.
+}
+
+\centerframe{
+  But sometimes we want simple data out of a collection type.
+}
+
+\centerframe{
+  Actually, quite often.
+}
+
+\begin{frame}[fragile]
+  \begin{minted}[gobble=4]{clojure}
+    (def my-collection [1 2 [3 4] 5])
+    (first my-collection)
+    ;=> 1
+    (nth my-collection 2)
+    ;=> [3 4]
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{center}
+    But if we want multiple elements this gets ugly fast
+  \end{center}
+  \begin{minted}[gobble=4]{clojure}
+    (let [a (nth my-collection 0)
+          b (nth my-collection 1)
+          c (nth my-collection 2)
+          d (nth my-collection 3)]
+      (println a c))
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{center}
+    How many of you know Python?
+  \end{center}
+  \pause
+  \begin{minted}[gobble=4]{python}
+    a, b, c, d = my_collection
+  \end{minted}
+\end{frame}
+
+\centerframe{
+  We want this too!
+}
+
+\begin{frame}[fragile]
+  \begin{center}
+    Hey, we can do this too!
+  \end{center}
+  \begin{minted}[gobble=4]{clojure}
+    (let [[a b c d] my-collection]
+      (println a c))
+  \end{minted}
 \end{frame}
 
 \end{document}
