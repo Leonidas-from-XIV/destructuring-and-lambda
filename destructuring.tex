@@ -66,6 +66,27 @@
   \end{minted}
 \end{frame}
 
+
+\begin{frame}[fragile]
+  \begin{center}
+    What about this?
+  \end{center}
+  \pause
+  \begin{minted}[gobble=4]{python}
+    a, b, *more = my_collection
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{center}
+    Can do!
+  \end{center}
+  \begin{minted}[gobble=4]{clojure}
+    (let [[a b &more] my-collection]
+      (println a more))
+  \end{minted}
+\end{frame}
+
 \begin{frame}[fragile]
   \begin{center}
     But wait, it's not only vectors
