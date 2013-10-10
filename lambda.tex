@@ -58,4 +58,21 @@
   as result.
 \end{frame}
 
+\begin{frame}[fragile]
+  This can be useful if you want to preconfigure a function:
+  \begin{minted}[gobble=4]{clojure}
+    (def increment (partial + 1))
+    (map increment [1 2 3 4 5])
+    ;=> (2 3 4 5 6)
+  \end{minted}
+\end{frame}
+
+\centerframe{
+  Or you could to access control: with the data being hidden as local binding
+  and return accessor functions which have the data in scope.
+
+  \pause
+  As we'll implement in the exercises.
+}
+
 \end{document}
