@@ -7,8 +7,55 @@
 
 \frame{\titlepage}
 
-\begin{frame}
-  Hello
+\centerframe{
+  What is a lambda?
+}
+
+\begin{frame}[fragile]
+  \begin{center}
+    A lambda is a function.
+  \end{center}
+  \pause
+  \begin{minted}[gobble=4]{clojure}
+    (fn [x] (* x 2))
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{center}
+    But why the hell "lambda"?
+  \end{center}
+  \begin{minted}[gobble=4]{scheme}
+    (lambda (x) (* x 2))
+  \end{minted}
+  \begin{center}
+    Scheme calls it that. Also: lambda calculus.
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+  What are scopes?
+
+  \pause
+  The bindings (assignments) a function can "see":
+
+  \begin{minted}[gobble=4]{clojure}
+    (fn [a] b)
+  \end{minted}
+
+  \texttt{a} is "in scope", \texttt{b} maybe.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \begin{minted}[gobble=4]{clojure}
+    (fn [a]
+      (fn [b]
+        (+ a b)))
+  \end{minted}
+  Takes \texttt{a} and returns a function. A FunctionFactory if you please!
+  The returned function takes \texttt{b} and returns \texttt{a} + \texttt{b}
+  as result.
 \end{frame}
 
 \end{document}
