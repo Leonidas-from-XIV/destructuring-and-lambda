@@ -61,15 +61,70 @@
 \begin{frame}[fragile]
   This can be useful if you want to preconfigure a function:
   \begin{minted}[gobble=4]{clojure}
-    (def increment (partial + 1))
+    (defn addition [a]
+      (fn [b]
+        (+ a b)))
+    (def increment (addition 1))
     (map increment [1 2 3 4 5])
     ;=> (2 3 4 5 6)
   \end{minted}
 \end{frame}
 
-\centerframe{
-  Or you could to access control: with the data being hidden as local binding
-  and return accessor functions which have the data in scope.
+\begin{frame}
+  Why should I want this?
+  \begin{itemize}
+    \item Ever wrote a callback function? They often expect fixed arities
+    \item Or just a higher order function like \texttt{map}?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  A hypothetical example GUI API
+  \begin{minted}[gobble=4,linenos]{clojure}
+    (let [address
+          (get-postal-address-of :santa)]
+      (button :text "Send to santa"
+              :onclick
+               (fn [event widget]
+                 (send-mail-to address))])
+  \end{minted}
+  Function in line 5 has access to \texttt{address}, but only takes
+  \texttt{event} and \texttt{widget} as arguments.
+\end{frame}
+
+\begin{frame}[fragile]
+  What is this exactly?
+  \begin{minted}[gobble=4]{clojure}
+    (addition 1)
+  \end{minted}
+  This returns a function, a so-called "closure". It "closes over" a scope, so
+  it knows that \texttt{a} is \texttt{1}.
+\end{frame}
+
+\centerframe{Closure}
+\centerframe{Clojure}
+\centerframe{I see what you did there, Rich Hickey.}
+
+\begin{frame}[fragile]
+  Preconfigure a function which does not return a closure? \texttt{partial}
+  to the rescue!
+  \begin{minted}[gobble=4]{clojure}
+    ; old and busted ;-)
+    (def increment #(+ 1 %))
+    ; new hotness
+    (def increment (partial + 1))
+    (map increment [1 2 3 4 5])
+    ;=> (2 3 4 5 6)
+  \end{minted}
+  It takes a function (\texttt{+}) and some arguments (\texttt{1}) and
+  returns a closure with the arguments pre-set.
+\end{frame}
+
+\centerframe{Other fun things with lambdas and scopes}
+
+\centerframe{Dynamic scoping with \texttt{binding}}
+
+\centerframe{Data access control
 
   \pause
   As we'll implement in the exercises.
